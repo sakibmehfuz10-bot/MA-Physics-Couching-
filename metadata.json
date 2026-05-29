@@ -1,0 +1,6 @@
+{
+  "name": "M.A Physics",
+  "description": "Premium cinematic landing page for M.A Physics tuition.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
