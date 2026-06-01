@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Information about a user.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "teacher", "admin"] },
+        "createdAt": { "type": "timestamp" },
+        "lastLoginAt": { "type": "timestamp" }
+      },
+      "required": ["uid", "email", "role", "createdAt"]
+    },
+    "StudentProfile": {
+      "title": "Student Profile",
+      "description": "Student specific information.",
+      "type": "object",
+      "properties": {
+        "ownerUid": { "type": "string" },
+        "googleEmail": { "type": "string" },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "fullName": { "type": "string" },
+        "dateOfBirth": { "type": "string" },
+        "gender": { "type": "string" },
+        "classLevel": { "type": "string" },
+        "academicYear": { "type": "string" },
+        "parentContactNumber": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["ownerUid", "googleEmail", "firstName", "lastName", "dateOfBirth", "gender", "classLevel", "academicYear", "parentContactNumber", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Stores core user identity, generated upon first login."
+    },
+    "studentProfiles/{profileId}": {
+      "schema": { "$ref": "#/entities/StudentProfile" },
+      "description": "Student details submitted by the user. Kept separate for granular access control."
+    }
+  }
+}
